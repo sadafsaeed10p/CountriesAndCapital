@@ -20,7 +20,8 @@
                 <label class="labelText">Neighbouring Countries: </label><br /><label class="lblDetails" *ngIf="isNeighboursExist == false">No neighbour found!!!</label>
                 <ul>
                     <li *ngFor="let nCountry of neighbours">
-                        <a (click) = "navigate(nCountry.countryCode)" [routerLink]="['/countries', nCountry.countryCode]">{{nCountry.name}}</a>
+                        <a *ngIf="isLoading == false" (click) = "navigate(nCountry.countryCode)" [routerLink]="['/countries', nCountry.countryCode]">{{nCountry.name}}</a>
+                        <a *ngIf="isLoading == true" class="disabled">{{ nCountry.name }}</a>
                     </li>
                 </ul>
             </td>
