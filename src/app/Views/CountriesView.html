@@ -1,0 +1,49 @@
+<div>
+  <a [routerLink]="['/']">Back</a><br/><br/>
+  <input [(ngModel)] = "searchTerm" (ngModelChange) = "search()" placeholder="Search Country"/>
+  <br />
+  <br />
+  <table border="1">
+    <tr>
+      <td>
+        <label class="coloumCaption">Country Name</label>
+      </td>
+      <td>
+        <label class="coloumCaption">Country Code</label>
+      </td>
+      <td>
+        <label class="coloumCaption">Capital</label>
+      </td>
+      <td>
+        <label class="coloumCaption">Area (Sqr Km)</label>
+      </td>
+      <td>
+        <label class="coloumCaption">Population</label>
+      </td>
+      <td>
+        <label class="coloumCaption">Continent Code</label>
+      </td>
+    </tr>
+    <tr  *ngFor="let country of countryList" (click)="onSelect(country)">
+      <td class="countryRow">
+        {{country.countryName}}
+      </td>
+      <td class="countryRow">
+        {{country.countryCode}}
+      </td>
+      <td class="countryRow">
+        {{country.capital}}
+      </td>
+      <td class="countryRow">
+        {{country.areaInSqKm | number : fractionSize }}
+      </td>
+      <td class="countryRow">
+        {{ country.population | number : fractionSize }}
+      </td>
+      <td class="countryRow">
+        {{country.continent}}
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="isLoading == true" class="loader">Loading..</div>
+</div>
